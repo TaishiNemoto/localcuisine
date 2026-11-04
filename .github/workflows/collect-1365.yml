@@ -1,0 +1,31 @@
+name: Collect MAFF 1365 index
+on:
+  push:
+    branches: [feat/culinary-lineage-mvp]
+    paths:
+      - 'scripts/collect_official_1365.py'
+      - '.github/workflows/collect-1365.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect official prefecture index data
+        run: python scripts/collect_official_1365.py
+      - name: Upload complete or partial corpus and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maff-cuisine-corpus-and-audit
+          path: |
+            data/maff.json
+            data/maff.csv
+            data/import_report.json
+          retention-days: 30
