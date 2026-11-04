@@ -15,7 +15,7 @@ GROUPS=[
 ("茨城県","ibaraki",30),("栃木県","tochigi",30),("群馬県","gunma",27),("埼玉県","saitama",29),
 ("千葉県","chiba",28),("東京都","tokyo",30),("神奈川県","kanagawa",23),
 ("新潟県","niigata",30),("富山県","toyama",30),("石川県","ishikawa",30),("福井県","fukui",29),
-("山梨県","yamanashi",30),("長野県","nagano",29),("岐阜県","gifu",30),("静岡県","shizuoka",28),
+("山梨県","yamanasi",30),("長野県","nagano",29),("岐阜県","gifu",30),("静岡県","shizuoka",28),
 ("愛知県","aichi",30),("三重県","mie",30),("滋賀県","shiga",30),("京都府","kyoto",30),
 ("大阪府","osaka",30),("兵庫県","hyogo",30),("奈良県","nara",30),("和歌山県","wakayama",27),
 ("鳥取県","tottori",27),("島根県","shimane",28),("岡山県","okayama",28),("広島県","hiroshima",30),
