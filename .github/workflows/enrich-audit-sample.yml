@@ -1,0 +1,29 @@
+name: Audit and enrich cuisine details (94 stratified samples)
+on:
+  push:
+    branches: [feat/culinary-lineage-mvp]
+    paths: ['scripts/collect_detail_sample.py', '.github/workflows/enrich-audit-sample.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4
+      - run: python scripts/collect_official_1365.py
+      - run: python scripts/collect_detail_sample.py
+      - name: Preserve machine-extracted sample and audit information
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-cuisine-detail-audit-94
+          path: |
+            data/maff.json
+            data/detail_sample.json
+          retention-days: 30
